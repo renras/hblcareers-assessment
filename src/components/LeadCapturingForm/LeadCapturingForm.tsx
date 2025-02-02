@@ -20,7 +20,12 @@ interface Form {
 }
 
 export default function LeadCapturingForm() {
-  const { register, handleSubmit, control } = useForm<Form>();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<Form>();
 
   const handleSubmitForm = handleSubmit((data) => {
     console.log(data);
@@ -51,6 +56,7 @@ export default function LeadCapturingForm() {
                 message: "Full name is required.",
               },
             })}
+            error={errors.fullName?.message}
           />
           <TextInput
             label="Email"
@@ -64,6 +70,7 @@ export default function LeadCapturingForm() {
                 message: "Email is required.",
               },
             })}
+            error={errors.email?.message}
           />
           <TextInput
             label="Phone Number"
@@ -75,6 +82,7 @@ export default function LeadCapturingForm() {
                 message: "Phone is required.",
               },
             })}
+            error={errors.phone?.message}
           />
           <Textarea
             label="Address"
@@ -87,6 +95,7 @@ export default function LeadCapturingForm() {
                 message: "Address is required.",
               },
             })}
+            error={errors.address?.message}
           />
 
           <Controller
@@ -99,8 +108,15 @@ export default function LeadCapturingForm() {
                 label="Preferred Snow Removal Service"
                 value={value}
                 onChange={onChange}
+                error={errors.preferredService?.message}
               />
             )}
+            rules={{
+              required: {
+                value: true,
+                message: "Preferred service is required.",
+              },
+            }}
           />
 
           <Group justify="flex-end" mt="md">
