@@ -11,7 +11,11 @@ import {
 import classes from "./LeadCapturingForm.module.css";
 import { useForm, Controller } from "react-hook-form";
 
-interface Form {
+interface Props {
+  onSubmit: (response: Form) => void;
+}
+
+export interface Form {
   fullName: string;
   email: string;
   phone: string;
@@ -19,7 +23,7 @@ interface Form {
   preferredService: string;
 }
 
-export default function LeadCapturingForm() {
+export default function LeadCapturingForm({ onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -28,7 +32,7 @@ export default function LeadCapturingForm() {
   } = useForm<Form>();
 
   const handleSubmitForm = handleSubmit((data) => {
-    console.log(data);
+    onSubmit(data);
   });
 
   return (

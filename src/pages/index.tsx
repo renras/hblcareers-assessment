@@ -1,4 +1,6 @@
 import { LeadCapturingForm } from "@/components";
+import { useState } from "react";
+import { Form as LeadFormResponse } from "@/components";
 
 /**
  TODO:
@@ -6,9 +8,15 @@ import { LeadCapturingForm } from "@/components";
  */
 
 export default function Page() {
+  const [responses, setResponses] = useState<LeadFormResponse[]>([]);
+
+  console.log(responses);
+
   return (
     <div>
-      <LeadCapturingForm />
+      <LeadCapturingForm
+        onSubmit={(response) => setResponses((prev) => [...prev, response])}
+      />
     </div>
   );
 }
