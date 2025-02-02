@@ -8,9 +8,15 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "2rem",
+          lg: "4rem",
+        },
       },
     },
   },
