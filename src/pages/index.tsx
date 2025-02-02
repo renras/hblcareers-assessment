@@ -6,9 +6,9 @@ import { CSVLink } from "react-csv";
 
 /**
  TODO:
- - [] mobile responsiveness
- - [] fix text alignment in two sections
- - [] export as csv
+ - [x] mobile responsiveness
+ - [x] fix text alignment in two sections
+ - [x] export as csv
  */
 
 export default function Page() {
