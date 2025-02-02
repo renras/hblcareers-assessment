@@ -9,10 +9,25 @@ import {
   Select,
 } from "@mantine/core";
 import classes from "./LeadCapturingForm.module.css";
+import { useForm, Controller } from "react-hook-form";
+
+interface Form {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  preferredService: string;
+}
 
 export default function LeadCapturingForm() {
+  const { register, handleSubmit, control } = useForm<Form>();
+
+  const handleSubmitForm = handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
-    <div className={classes.wrapper}>
+    <form className={classes.wrapper} onSubmit={handleSubmitForm}>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={50}>
         <div>
           <Title className={`${classes.title} mt-8 text-4xl !leading-[2ch]`}>
@@ -28,42 +43,73 @@ export default function LeadCapturingForm() {
         <div className={classes.form}>
           <TextInput
             label="Full Name"
-            placeholder="your@email.com"
-            required
+            placeholder="John Doe"
             classNames={{ input: classes.input, label: classes.inputLabel }}
+            {...register("fullName", {
+              required: {
+                value: true,
+                message: "Full name is required.",
+              },
+            })}
           />
           <TextInput
-            label="Name"
-            placeholder="John Doe"
+            label="Email"
+            type="email"
+            placeholder="your@email.com"
             mt="md"
             classNames={{ input: classes.input, label: classes.inputLabel }}
+            {...register("email", {
+              required: {
+                value: true,
+                message: "Email is required.",
+              },
+            })}
           />
           <TextInput
             label="Phone Number"
             mt="md"
             classNames={{ input: classes.input, label: classes.inputLabel }}
+            {...register("phone", {
+              required: {
+                value: true,
+                message: "Phone is required.",
+              },
+            })}
           />
           <Textarea
-            required
             label="Address"
-            placeholder="I want to order your goods"
             minRows={4}
             mt="md"
             classNames={{ input: classes.input, label: classes.inputLabel }}
+            {...register("address", {
+              required: {
+                value: true,
+                message: "Address is required.",
+              },
+            })}
           />
 
-          <Select
-            mt="md"
-            required
-            data={["Driveway", "Sidewalk", "Both"]}
-            label="Preferred Snow Removal Service"
+          <Controller
+            name="preferredService"
+            control={control}
+            render={({ field: { value, onChange } }) => (
+              <Select
+                mt="md"
+                data={["Driveway", "Sidewalk", "Both"]}
+                label="Preferred Snow Removal Service"
+                value={value}
+                onChange={onChange}
+              />
+            )}
           />
 
           <Group justify="flex-end" mt="md">
-            <Button className={classes.control}>Send message</Button>
+            <Button type="submit" className={classes.control}>
+              Send message
+            </Button>
           </Group>
         </div>
       </SimpleGrid>
-    </div>
+    </form>
   );
 }
