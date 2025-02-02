@@ -1,9 +1,11 @@
-import { Text } from "@mantine/core";
+import { LeadCapturingForm } from "@/components";
 
 export default function Page() {
   return (
     <div className="container">
-      <Text>Home</Text>
+      <div>
+        <LeadCapturingForm />
+      </div>
     </div>
   );
 }
