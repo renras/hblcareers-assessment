@@ -6,6 +6,7 @@ import {
   Textarea,
   TextInput,
   Title,
+  Select,
 } from "@mantine/core";
 import classes from "./LeadCapturingForm.module.css";
 
@@ -26,7 +27,7 @@ export default function LeadCapturingForm() {
         </div>
         <div className={classes.form}>
           <TextInput
-            label="Email"
+            label="Full Name"
             placeholder="your@email.com"
             required
             classNames={{ input: classes.input, label: classes.inputLabel }}
@@ -37,13 +38,25 @@ export default function LeadCapturingForm() {
             mt="md"
             classNames={{ input: classes.input, label: classes.inputLabel }}
           />
+          <TextInput
+            label="Phone Number"
+            mt="md"
+            classNames={{ input: classes.input, label: classes.inputLabel }}
+          />
           <Textarea
             required
-            label="Your message"
+            label="Address"
             placeholder="I want to order your goods"
             minRows={4}
             mt="md"
             classNames={{ input: classes.input, label: classes.inputLabel }}
+          />
+
+          <Select
+            mt="md"
+            required
+            data={["Driveway", "Sidewalk", "Both"]}
+            label="Preferred Snow Removal Service"
           />
 
           <Group justify="flex-end" mt="md">
