@@ -1,7 +1,8 @@
 import { LeadCapturingForm } from "@/components";
 import { useState } from "react";
 import { Form as LeadFormResponse } from "@/components";
-import { Table, Title } from "@mantine/core";
+import { Table, Title, Button } from "@mantine/core";
+import { CSVLink } from "react-csv";
 
 /**
  TODO:
@@ -12,6 +13,15 @@ import { Table, Title } from "@mantine/core";
 
 export default function Page() {
   const [responses, setResponses] = useState<LeadFormResponse[]>([]);
+
+  const responsesStringArray = responses.map((response) =>
+    Object.values(response)
+  );
+
+  const csvData = [
+    ["Name", "Email", "Phone", "Address", "Preferred Service"],
+    ...responsesStringArray,
+  ];
 
   const responseTableRows = responses.map((response, index) => (
     <Table.Tr key={index}>
@@ -32,7 +42,21 @@ export default function Page() {
         <Title order={2} className="mt-24">
           Form Submissions
         </Title>
-        <Table className="mt-16">
+
+        <div className="mt-16 flex">
+          <Button
+            color="dark"
+            variant="outline"
+            className="ms-auto"
+            component={CSVLink}
+            data={csvData}
+            target="_blank"
+            filename="responses.csv"
+          >
+            Download CSV
+          </Button>
+        </div>
+        <Table className="mt-8">
           <Table.Thead>
             <Table.Tr>
               <Table.Th>Name</Table.Th>
