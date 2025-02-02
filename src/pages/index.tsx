@@ -1,11 +1,14 @@
 import { LeadCapturingForm } from "@/components";
 
+/**
+ TODO:
+ - [] mobile responsiveness
+ */
+
 export default function Page() {
   return (
-    <div className="container">
-      <div>
-        <LeadCapturingForm />
-      </div>
+    <div>
+      <LeadCapturingForm />
     </div>
   );
 }

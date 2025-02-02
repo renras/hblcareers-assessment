@@ -14,9 +14,14 @@ export default function LeadCapturingForm() {
     <div className={classes.wrapper}>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={50}>
         <div>
-          <Title className={classes.title}>Contact us</Title>
-          <Text className={classes.description} mt="sm" mb={30}>
-            Leave your email and we will get back to you within 24 hours
+          <Title className={`${classes.title} mt-8 text-4xl !leading-[2ch]`}>
+            COMMERCIAL SNOW SERVICE
+          </Title>
+          <Text className={`${classes.description} mt-8`} mb={30}>
+            During the harsh winter months in New York, it is important to have
+            a reliable snow and ice management company on your side. Our team of
+            dedicated professionals is on standby 24/7 for all your company’s
+            needs.
           </Text>
         </div>
         <div className={classes.form}>
