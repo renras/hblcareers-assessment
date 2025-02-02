@@ -1,10 +1,4 @@
 import {
-  IconBrandInstagram,
-  IconBrandTwitter,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
-import {
-  ActionIcon,
   Button,
   Group,
   SimpleGrid,
@@ -13,23 +7,9 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
-import { ContactIconsList } from "./ContactIcons";
-import classes from "./ContactUs.module.css";
-
-const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram];
+import classes from "./LeadCapturingForm.module.css";
 
 export default function LeadCapturingForm() {
-  const icons = social.map((Icon, index) => (
-    <ActionIcon
-      key={index}
-      size={28}
-      className={classes.social}
-      variant="transparent"
-    >
-      <Icon size={22} stroke={1.5} />
-    </ActionIcon>
-  ));
-
   return (
     <div className={classes.wrapper}>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={50}>
@@ -38,10 +18,6 @@ export default function LeadCapturingForm() {
           <Text className={classes.description} mt="sm" mb={30}>
             Leave your email and we will get back to you within 24 hours
           </Text>
-
-          <ContactIconsList />
-
-          <Group mt="xl">{icons}</Group>
         </div>
         <div className={classes.form}>
           <TextInput
