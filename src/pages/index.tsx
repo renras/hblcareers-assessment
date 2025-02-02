@@ -7,6 +7,7 @@ import { Table, Title } from "@mantine/core";
  TODO:
  - [] mobile responsiveness
  - [] fix text alignment in two sections
+ - [] export as csv
  */
 
 export default function Page() {

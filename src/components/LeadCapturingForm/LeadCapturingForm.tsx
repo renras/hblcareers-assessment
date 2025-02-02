@@ -29,10 +29,12 @@ export default function LeadCapturingForm({ onSubmit }: Props) {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm<Form>();
 
   const handleSubmitForm = handleSubmit((data) => {
     onSubmit(data);
+    reset();
   });
 
   return (
@@ -105,16 +107,18 @@ export default function LeadCapturingForm({ onSubmit }: Props) {
           <Controller
             name="preferredService"
             control={control}
-            render={({ field: { value, onChange } }) => (
-              <Select
-                mt="md"
-                data={["Driveway", "Sidewalk", "Both"]}
-                label="Preferred Snow Removal Service"
-                value={value}
-                onChange={onChange}
-                error={errors.preferredService?.message}
-              />
-            )}
+            render={({ field: { value, onChange } }) => {
+              return (
+                <Select
+                  mt="md"
+                  data={["Driveway", "Sidewalk", "Both"]}
+                  label="Preferred Snow Removal Service"
+                  value={value}
+                  onChange={onChange}
+                  error={errors.preferredService?.message}
+                />
+              );
+            }}
             rules={{
               required: {
                 value: true,
